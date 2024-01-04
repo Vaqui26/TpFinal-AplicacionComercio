@@ -72,7 +72,7 @@ namespace TPFinal
             this.dvgArticulos.MultiSelect = false;
             this.dvgArticulos.Name = "dvgArticulos";
             this.dvgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgArticulos.Size = new System.Drawing.Size(462, 281);
+            this.dvgArticulos.Size = new System.Drawing.Size(444, 281);
             this.dvgArticulos.TabIndex = 2;
             this.dvgArticulos.SelectionChanged += new System.EventHandler(this.dvgArticulos_SelectionChanged);
             // 
@@ -105,19 +105,19 @@ namespace TPFinal
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(510, 59);
+            this.pbxArticulo.Location = new System.Drawing.Point(492, 59);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(236, 158);
+            this.pbxArticulo.Size = new System.Drawing.Size(254, 194);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 6;
             this.pbxArticulo.TabStop = false;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(510, 245);
+            this.txtDescripcion.Location = new System.Drawing.Point(492, 270);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(236, 135);
+            this.txtDescripcion.Size = new System.Drawing.Size(229, 110);
             this.txtDescripcion.TabIndex = 7;
             // 
             // lblCampo
