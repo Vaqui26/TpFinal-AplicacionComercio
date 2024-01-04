@@ -14,14 +14,33 @@ namespace TPFinal
 {
     public partial class FormAgregar : Form
     {
+        private Articulo articulo = null;
+
         public FormAgregar()
         {
             InitializeComponent();
+        }
+        public FormAgregar(Articulo art)
+        {
+            InitializeComponent();
+            articulo = art;
         }
 
         private void FormAgregar_Load(object sender, EventArgs e)
         {
             cargarComboBoxs();
+            if(articulo != null)
+            {
+                txtCodigo.Text = articulo.Codigo;
+                txtNombre.Text = articulo.Nombre;
+                txtDescripcion.Text = articulo.Descripcion;
+                cboMarca.SelectedValue = articulo.Marca.Id;
+                cboCategoria.SelectedValue = articulo.Categoria.Id;
+                txtImagen.Text = articulo.UrlImagen;
+                cargarImagen(articulo.UrlImagen);
+                txtPrecio.Text = articulo.Precio.ToString();
+
+            }
         }
         private void cargarComboBoxs()
         {   
@@ -52,16 +71,21 @@ namespace TPFinal
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {   //Prop : chequea de que todos los campos esten llenados para poder agregar un nuevo articulo.
             //En caso que no esten llenos algunos los pintara de rojo hasta que no sean completados.
+
             bool bandera = true;
-            string Codigo = txtCodigo.Text;
-            string Nombre = txtNombre.Text;
-            string Descripcion = txtDescripcion.Text;
-            Marca Marca = (Marca)cboMarca.SelectedItem;
-            Categoria Categoria = (Categoria)cboCategoria.SelectedItem;
-            string Imagen = txtImagen.Text;
-            string Precio = txtPrecio.Text;
+
+            if (articulo == null)
+                articulo = new Articulo();
+                       
+            articulo.Codigo = txtCodigo.Text;
+            articulo.Nombre = txtNombre.Text;
+            articulo.Descripcion = txtDescripcion.Text;
+            articulo.Marca = (Marca)cboMarca.SelectedItem;
+            articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+            articulo.UrlImagen= txtImagen.Text;
+            articulo.Precio = decimal.Parse(txtPrecio.Text);
             
-            if (Codigo == "")
+            if (articulo.Codigo == "")
             {
                 txtCodigo.BackColor = Color.Red;
                 bandera = false;
@@ -70,7 +94,7 @@ namespace TPFinal
             {
                 txtCodigo.BackColor = System.Drawing.SystemColors.Control;
             } 
-            if (Nombre == "")
+            if (articulo.Nombre == "")
             {
                 txtNombre.BackColor = Color.Red;
                 bandera = false;
@@ -79,7 +103,7 @@ namespace TPFinal
             {
                 txtNombre.BackColor = System.Drawing.SystemColors.Control;
             }
-            if (Descripcion == "")
+            if (articulo.Descripcion == "")
             {
                 txtDescripcion.BackColor = Color.Red;
                 bandera = false;
@@ -88,7 +112,7 @@ namespace TPFinal
             {
                 txtDescripcion.BackColor = System.Drawing.SystemColors.Control;
             }
-            if (Precio == "")
+            if (articulo.Precio.ToString() == "" )
             {
                 txtPrecio.BackColor = Color.Red;
                 bandera = false;
@@ -100,8 +124,16 @@ namespace TPFinal
             if (bandera)
             {
                 NegocioArticulo negocioArt = new NegocioArticulo();
-                negocioArt.agregarNuevoArticulo(Codigo, Nombre, Descripcion, Marca.Id, Categoria.Id, Imagen, Precio);
-                MessageBox.Show("Se agrego exitosamente!!");
+                if(articulo.Id != 0)
+                {
+                    negocioArt.modificar(articulo);
+                    MessageBox.Show("Modificacion Exitosa!!");
+                }
+                else
+                {
+                    negocioArt.agregarNuevoArticulo(articulo);
+                    MessageBox.Show("Se agrego exitosamente!!");
+                }
                 this.Close();
 
             }
@@ -121,6 +153,22 @@ namespace TPFinal
         {   //Prop : solo deja ingresar numeros a nuestra TextBox.
             if ((e.KeyChar < 48 || e.KeyChar > 59) && e.KeyChar != 8)
                 e.Handled = true;
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagen.Text);
+        }
+        private void cargarImagen(string urlImagen)
+        {
+            try
+            {
+                pbxAgregar.Load(urlImagen);
+            }
+            catch (Exception)
+            {
+                pbxAgregar.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
+            }
         }
     }
 }

@@ -44,10 +44,10 @@ namespace TPFinal
             this.txtImagen = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxAgregar = new System.Windows.Forms.PictureBox();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnCancelarAgregar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAgregar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloAgregar
@@ -167,6 +167,7 @@ namespace TPFinal
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(144, 20);
             this.txtImagen.TabIndex = 12;
+            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // lblPrecio
             // 
@@ -186,13 +187,14 @@ namespace TPFinal
             this.txtPrecio.TabIndex = 14;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
-            // pictureBox1
+            // pbxAgregar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(356, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 276);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.pbxAgregar.Location = new System.Drawing.Point(356, 37);
+            this.pbxAgregar.Name = "pbxAgregar";
+            this.pbxAgregar.Size = new System.Drawing.Size(235, 276);
+            this.pbxAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAgregar.TabIndex = 15;
+            this.pbxAgregar.TabStop = false;
             // 
             // btnAgregarArticulo
             // 
@@ -221,7 +223,7 @@ namespace TPFinal
             this.ClientSize = new System.Drawing.Size(617, 377);
             this.Controls.Add(this.btnCancelarAgregar);
             this.Controls.Add(this.btnAgregarArticulo);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbxAgregar);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.txtImagen);
@@ -240,7 +242,7 @@ namespace TPFinal
             this.Name = "FormAgregar";
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.FormAgregar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAgregar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,7 +265,7 @@ namespace TPFinal
         private System.Windows.Forms.TextBox txtImagen;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxAgregar;
         private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnCancelarAgregar;
     }

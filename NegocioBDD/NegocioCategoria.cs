@@ -24,7 +24,8 @@ namespace NegocioBDD
                 {
                     Categoria categoriaAux = new Categoria();
                     categoriaAux.Id = (int)accesoDatos.Lector["Id"];
-                    categoriaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    if(!(accesoDatos.Lector["Descripcion"] is DBNull))
+                        categoriaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
                     lista.Add(categoriaAux);
                 }
                 return lista;

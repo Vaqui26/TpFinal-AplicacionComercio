@@ -24,7 +24,8 @@ namespace NegocioBDD
                 {
                     Marca marcaAux = new Marca();
                     marcaAux.Id = (int)accesoDatos.Lector["Id"];
-                    marcaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    if (!(accesoDatos.Lector["Descripcion"] is DBNull))
+                        marcaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
                     lista.Add(marcaAux);
                 }
 

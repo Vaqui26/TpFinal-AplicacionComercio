@@ -25,16 +25,23 @@ namespace NegocioBDD
                 {
                     Articulo articuloAux = new Articulo();
                     articuloAux.Id = (int)accesoDatos.Lector["ID"];
-                    articuloAux.Codigo = (string)accesoDatos.Lector["Codigo"];
-                    articuloAux.Nombre = (string)accesoDatos.Lector["Nombre"];
-                    articuloAux.Descripcion = (string)accesoDatos.Lector["Desc_Articulo"];
-                    articuloAux.UrlImagen = (string)accesoDatos.Lector["ImagenUrl"];
-                    articuloAux.Precio = (decimal)accesoDatos.Lector["Precio"];
+                    if(!(accesoDatos.Lector["Codigo"] is DBNull))
+                        articuloAux.Codigo = (string)accesoDatos.Lector["Codigo"];
+                    if (!(accesoDatos.Lector["Nombre"] is DBNull))
+                        articuloAux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    if (!(accesoDatos.Lector["Desc_Articulo"] is DBNull)) 
+                        articuloAux.Descripcion = (string)accesoDatos.Lector["Desc_Articulo"];
+                    if (!(accesoDatos.Lector["ImagenUrl"] is DBNull))
+                        articuloAux.UrlImagen = (string)accesoDatos.Lector["ImagenUrl"];
+                    if (!(accesoDatos.Lector["Precio"] is DBNull)) 
+                        articuloAux.Precio = (decimal)accesoDatos.Lector["Precio"];
                     articuloAux.Marca = new Marca();
-                    articuloAux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
+                    if (!(accesoDatos.Lector["IdMarca"] is DBNull))
+                        articuloAux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
                     articuloAux.Marca.Descripcion = (string)accesoDatos.Lector["Desc_Marca"];
                     articuloAux.Categoria = new Categoria();
-                    articuloAux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
+                    if (!(accesoDatos.Lector["IdCategoria"] is DBNull))
+                        articuloAux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
                     articuloAux.Categoria.Descripcion = (string)accesoDatos.Lector["Desc_Categoria"];
 
                     lista.Add(articuloAux);
@@ -53,9 +60,57 @@ namespace NegocioBDD
             }
          
         }
-        public void agregarNuevoArticulo(string Codigo, string Nombre, string Descripcion, int IdMarca, int IdCategoria, string Imagen, string Precio)
+        public void agregarNuevoArticulo(Articulo articulo)
         {
+            ManejoBDD accesoDatos = new ManejoBDD();
 
+            try
+            {
+                accesoDatos.setearConsulta("Insert into ARTICULOS values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Imagen, @Precio)");
+                accesoDatos.setearParametros("@Codigo", articulo.Codigo);
+                accesoDatos.setearParametros("@Nombre", articulo.Nombre);
+                accesoDatos.setearParametros("@Descripcion", articulo.Descripcion);
+                accesoDatos.setearParametros("@IdMarca", articulo.Marca.Id);
+                accesoDatos.setearParametros("@IdCategoria", articulo.Categoria.Id);
+                accesoDatos.setearParametros("@Imagen", articulo.UrlImagen);
+                accesoDatos.setearParametros("@Precio", articulo.Precio);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public void modificar(Articulo articulo)
+        {
+            ManejoBDD accesoDatos = new ManejoBDD();
+            try
+            {
+                accesoDatos.setearConsulta("Update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenURL = @ImagenURL, Precio = @Precio where Id = @Id");
+                accesoDatos.setearParametros("@Id", articulo.Id);
+                accesoDatos.setearParametros("@Codigo",articulo.Codigo);
+                accesoDatos.setearParametros("@Nombre",articulo.Nombre);
+                accesoDatos.setearParametros("@Descripcion",articulo.Descripcion);
+                accesoDatos.setearParametros("@IdMarca",articulo.Marca.Id);
+                accesoDatos.setearParametros("@IdCategoria",articulo.Categoria.Id);
+                accesoDatos.setearParametros("@ImagenURL",articulo.UrlImagen);
+                accesoDatos.setearParametros("@Precio",articulo.Precio);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
     }
 }

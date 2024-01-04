@@ -94,6 +94,7 @@ namespace TPFinal
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -108,17 +109,17 @@ namespace TPFinal
             // 
             this.pbxArticulo.Location = new System.Drawing.Point(492, 59);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(254, 217);
+            this.pbxArticulo.Size = new System.Drawing.Size(254, 205);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 6;
             this.pbxArticulo.TabStop = false;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(492, 282);
+            this.txtDescripcion.Location = new System.Drawing.Point(492, 270);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(215, 98);
+            this.txtDescripcion.Size = new System.Drawing.Size(214, 127);
             this.txtDescripcion.TabIndex = 7;
             // 
             // lblCampo
