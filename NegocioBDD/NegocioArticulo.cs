@@ -51,7 +51,11 @@ namespace NegocioBDD
             {
                 accesoDatos.cerrarConexion();
             }
-            
+         
+        }
+        public void agregarNuevoArticulo(string Codigo, string Nombre, string Descripcion, int IdMarca, int IdCategoria, string Imagen, string Precio)
+        {
+
         }
     }
 }

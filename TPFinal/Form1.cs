@@ -62,5 +62,12 @@ namespace TPFinal
             txtDescripcion.Text = "Descripcion Completa del Articulo : " + "\r\nID Articulo : " + Id + "\r\nCodigo Articulo : " + Codigo + "\r\nNombre Articulo : " + Nombre + "\r\nMarca : " + Marca + "\r\nCategoria : " + Categoria + "\r\nPrecio : " + Precio;
 
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormAgregar agregar = new FormAgregar();
+            agregar.ShowDialog();
+
+        }
     }
 }

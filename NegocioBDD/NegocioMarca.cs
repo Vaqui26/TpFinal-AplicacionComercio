@@ -9,6 +9,36 @@ namespace NegocioBDD
 {
     public class NegocioMarca
     {
-        private List<Marca> lista;
+        private List<Marca> lista = new List<Marca>();
+
+        public List<Marca> listarMarca()
+        {
+            ManejoBDD accesoDatos = new ManejoBDD();
+
+            try
+            {
+                accesoDatos.setearConsulta("Select Id, Descripcion From MARCAS");
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Marca marcaAux = new Marca();
+                    marcaAux.Id = (int)accesoDatos.Lector["Id"];
+                    marcaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    lista.Add(marcaAux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

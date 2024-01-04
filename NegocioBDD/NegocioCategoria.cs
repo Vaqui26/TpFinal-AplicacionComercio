@@ -9,6 +9,35 @@ namespace NegocioBDD
 {
     public class NegocioCategoria
     {
-        private List<Categoria> lista;
+        private List<Categoria> lista = new List<Categoria>();
+
+        public List<Categoria> listarCategoria()
+        {
+            ManejoBDD accesoDatos = new ManejoBDD();
+
+            try
+            {
+                accesoDatos.setearConsulta("Select Id, Descripcion From CATEGORIAS");
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Categoria categoriaAux = new Categoria();
+                    categoriaAux.Id = (int)accesoDatos.Lector["Id"];
+                    categoriaAux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    lista.Add(categoriaAux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }
