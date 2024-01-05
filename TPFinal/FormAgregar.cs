@@ -73,7 +73,7 @@ namespace TPFinal
             //En caso que no esten llenos algunos los pintara de rojo hasta que no sean completados.
 
             bool bandera = true;
-
+            try { 
             if (articulo == null)
                 articulo = new Articulo();
                        
@@ -83,7 +83,7 @@ namespace TPFinal
             articulo.Marca = (Marca)cboMarca.SelectedItem;
             articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
             articulo.UrlImagen= txtImagen.Text;
-            articulo.Precio = decimal.Parse(txtPrecio.Text);
+            
             
             if (articulo.Codigo == "")
             {
@@ -112,13 +112,14 @@ namespace TPFinal
             {
                 txtDescripcion.BackColor = System.Drawing.SystemColors.Control;
             }
-            if (articulo.Precio.ToString() == "" )
+            if (txtPrecio.Text == "" )
             {
                 txtPrecio.BackColor = Color.Red;
                 bandera = false;
             }
             else
             {
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
                 txtPrecio.BackColor = System.Drawing.SystemColors.Control;
             }
             if (bandera)
@@ -141,7 +142,13 @@ namespace TPFinal
             {
                 MessageBox.Show("Complete los espacios en rojo por favor.");
             }
-                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
 
         private void btnCancelarAgregar_Click(object sender, EventArgs e)

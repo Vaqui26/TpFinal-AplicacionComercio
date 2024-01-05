@@ -202,7 +202,7 @@ namespace TPFinal
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarArticulo.TabIndex = 16;
-            this.btnAgregarArticulo.Text = "Agregar";
+            this.btnAgregarArticulo.Text = "Aceptar";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 

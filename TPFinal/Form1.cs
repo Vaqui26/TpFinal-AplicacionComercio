@@ -44,7 +44,7 @@ namespace TPFinal
             }
             catch (Exception)
             {
-                pbxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
+                pbxArticulo.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg");
             }
         }
 
