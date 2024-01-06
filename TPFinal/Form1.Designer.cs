@@ -63,6 +63,7 @@ namespace TPFinal
             this.txtFiltrarRapido.Name = "txtFiltrarRapido";
             this.txtFiltrarRapido.Size = new System.Drawing.Size(172, 20);
             this.txtFiltrarRapido.TabIndex = 1;
+            this.txtFiltrarRapido.TextChanged += new System.EventHandler(this.txtFiltrarRapido_TextChanged);
             // 
             // dvgArticulos
             // 

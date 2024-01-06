@@ -40,7 +40,7 @@ namespace TPFinal
         {
             try
             {
-                pbxArticulo.Load(urlImagen);   
+                pbxArticulo.Load(urlImagen);
             }
             catch (Exception)
             {
@@ -52,20 +52,20 @@ namespace TPFinal
         {
             try
             {
-                if(dvgArticulos.CurrentRow != null)
+                if (dvgArticulos.CurrentRow != null)
                 {
                     Articulo artActual = (Articulo)dvgArticulos.CurrentRow.DataBoundItem; // Aveces falla al agregar un articulo, nose aun porque.
                     cargarImagen(artActual.UrlImagen);
                     mostrarDescripcion(artActual);
                 }
-                
+
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.ToString()); 
+                MessageBox.Show(ex.ToString());
             }
-            
+
         }
         private void mostrarDescripcion(Articulo art)
         {   //Prop : muestra los datos completos del articulo recibido por parametro.
@@ -92,7 +92,7 @@ namespace TPFinal
         private void btnModificar_Click(object sender, EventArgs e)
         {   // Prop : cargar la ventana para modificar los datos de un Articulo seleccionado de la grilla.
 
-            if(dvgArticulos.CurrentRow != null)
+            if (dvgArticulos.CurrentRow != null)
             {
                 Articulo articuloActual = (Articulo)dvgArticulos.CurrentRow.DataBoundItem;
                 FormAgregar ventanaModificar = new FormAgregar(articuloActual);
@@ -102,7 +102,7 @@ namespace TPFinal
             }
             else
             {
-                MessageBox.Show("Seleccionar algun elemento de la tabla por favor","ATENCION",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Seleccionar algun elemento de la tabla por favor", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -114,7 +114,7 @@ namespace TPFinal
             {
                 Articulo articulo = (Articulo)dvgArticulos.CurrentRow.DataBoundItem;
                 DialogResult respuesta = MessageBox.Show("¿Seguro que quiere eliminar el Articulo?\r\n(se borrara de manera permanente)", "ADVERTENCIA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(respuesta == DialogResult.Yes)
+                if (respuesta == DialogResult.Yes)
                 {
                     negocio.borrarNegocio(articulo.Id);
                     cargarGrilla();
@@ -125,6 +125,22 @@ namespace TPFinal
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtFiltrarRapido_TextChanged(object sender, EventArgs e)
+        {
+            NegocioArticulo articulos = new NegocioArticulo();
+            List<Articulo> listaArticulos = articulos.ListarArticulos();
+            string textFilrto = txtFiltrarRapido.Text;
+            if(textFilrto != "")
+            {
+                listaArticulos = listaArticulos.FindAll(articulo => articulo.Nombre.ToUpper().Contains(textFilrto.ToUpper()));
+            }
+            dvgArticulos.DataSource = null;
+            dvgArticulos.DataSource = listaArticulos;
+            ocultarColumnas();
+
+
         }
     }
 }
