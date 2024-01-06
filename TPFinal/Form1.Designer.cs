@@ -44,6 +44,7 @@ namespace TPFinal
             this.lblFiltroBDD = new System.Windows.Forms.Label();
             this.txtFiltroBDD = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.lblTextoFiltro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +52,10 @@ namespace TPFinal
             // lblFiltroRapido
             // 
             this.lblFiltroRapido.AutoSize = true;
-            this.lblFiltroRapido.Location = new System.Drawing.Point(26, 25);
+            this.lblFiltroRapido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroRapido.Location = new System.Drawing.Point(11, 23);
             this.lblFiltroRapido.Name = "lblFiltroRapido";
-            this.lblFiltroRapido.Size = new System.Drawing.Size(38, 13);
+            this.lblFiltroRapido.Size = new System.Drawing.Size(44, 15);
             this.lblFiltroRapido.TabIndex = 0;
             this.lblFiltroRapido.Text = "Filtrar :";
             // 
@@ -135,14 +137,17 @@ namespace TPFinal
             // 
             // cboCampo
             // 
+            this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
             this.cboCampo.Location = new System.Drawing.Point(77, 403);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(86, 21);
             this.cboCampo.TabIndex = 9;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // cboCriterio
             // 
+            this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
             this.cboCriterio.Location = new System.Drawing.Point(232, 403);
             this.cboCriterio.Name = "cboCriterio";
@@ -182,12 +187,24 @@ namespace TPFinal
             this.btnFiltrar.TabIndex = 14;
             this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // lblTextoFiltro
+            // 
+            this.lblTextoFiltro.AutoSize = true;
+            this.lblTextoFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.lblTextoFiltro.Location = new System.Drawing.Point(248, 25);
+            this.lblTextoFiltro.Name = "lblTextoFiltro";
+            this.lblTextoFiltro.Size = new System.Drawing.Size(143, 16);
+            this.lblTextoFiltro.TabIndex = 15;
+            this.lblTextoFiltro.Text = "= (Filtrado por nombre)";
             // 
             // fmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 450);
+            this.Controls.Add(this.lblTextoFiltro);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.txtFiltroBDD);
             this.Controls.Add(this.lblFiltroBDD);
@@ -230,6 +247,7 @@ namespace TPFinal
         private System.Windows.Forms.Label lblFiltroBDD;
         private System.Windows.Forms.TextBox txtFiltroBDD;
         private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Label lblTextoFiltro;
     }
 }
 

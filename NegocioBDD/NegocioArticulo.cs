@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Objetos;
 
 namespace NegocioBDD
@@ -125,6 +126,115 @@ namespace NegocioBDD
             {
 
                 throw ex;
+            }
+        }
+        public List<Articulo> filtrarArticulos(string campo, string criterio, string texto)
+        {
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            ManejoBDD accesoDatos = new ManejoBDD();
+
+            try { 
+                    string consulta = "Select a.Id as ID,Codigo,Nombre,a.Descripcion as Desc_Articulo,IdMarca,m.descripcion as Desc_Marca,IdCategoria ,c.Descripcion as Desc_Categoria,ImagenUrl,Precio From ARTICULOS as a Join MARCAS as m On IdMarca = m.Id Join CATEGORIAS as c On IdCategoria = c.Id Where ";
+                    switch (campo)
+                    {
+                        case "Nombre":
+                            switch (criterio)
+                            {
+                                case "Empieza con":
+                                    consulta += "Nombre like '" + texto + "%'"; 
+                                    break;
+                                case "Termina con":
+                                    consulta += "Nombre like '%" + texto + "'";
+                                    break;
+                                default:
+                                    consulta += "Nombre like '%" + texto + "%'";
+                                    break;
+                                
+                            }
+                            break;
+                        case "Marca":
+                            switch (criterio)
+                            {
+                                case "Empieza con":
+                                    consulta += "m.Descripcion like '" + texto + "%'";
+                                    break;
+                                case "Termina con":
+                                    consulta += "m.descripcion like '%" + texto + "'";
+                                    break;
+                                default:
+                                    consulta += "m.descripcion like '%" + texto + "%'";
+                                    break;
+                            }
+                            break;
+                        case "Categoria":
+                            switch (criterio)
+                            {
+                                case "Empieza con":
+                                    consulta += "c.descripcion like '" + texto + "%'";
+                                    break;
+                                case "Termina con":
+                                    consulta += "c.descripcion like '%" + texto + "'";
+                                    break;
+                                default:
+                                    consulta += "c.descripcion like '%" + texto + "%'";
+                                    break;
+                            }
+                            break;
+                        default:
+                            switch (criterio)
+                            {
+                                case "Mayor a":
+                                    consulta += "Precio > " + texto;
+                                    break;
+                                case "Menor a":
+                                    consulta += "Precio < " + texto;
+                                    break;
+                                default:
+                                    consulta += "Precio = " + texto;
+                                    break;
+                            }
+                            break;
+                    }
+                accesoDatos.setearConsulta(consulta);
+                accesoDatos.ejecutarLectura();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulo articuloAux = new Articulo();
+                    articuloAux.Id = (int)accesoDatos.Lector["ID"];
+                    if (!(accesoDatos.Lector["Codigo"] is DBNull))
+                        articuloAux.Codigo = (string)accesoDatos.Lector["Codigo"];
+                    if (!(accesoDatos.Lector["Nombre"] is DBNull))
+                        articuloAux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    if (!(accesoDatos.Lector["Desc_Articulo"] is DBNull))
+                        articuloAux.Descripcion = (string)accesoDatos.Lector["Desc_Articulo"];
+                    if (!(accesoDatos.Lector["ImagenUrl"] is DBNull))
+                        articuloAux.UrlImagen = (string)accesoDatos.Lector["ImagenUrl"];
+                    if (!(accesoDatos.Lector["Precio"] is DBNull))
+                        articuloAux.Precio = (decimal)accesoDatos.Lector["Precio"];
+                    articuloAux.Marca = new Marca();
+                    if (!(accesoDatos.Lector["IdMarca"] is DBNull))
+                        articuloAux.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
+                    articuloAux.Marca.Descripcion = (string)accesoDatos.Lector["Desc_Marca"];
+                    articuloAux.Categoria = new Categoria();
+                    if (!(accesoDatos.Lector["IdCategoria"] is DBNull))
+                        articuloAux.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
+                    articuloAux.Categoria.Descripcion = (string)accesoDatos.Lector["Desc_Categoria"];
+
+                    listaFiltrada.Add(articuloAux);
+                }
+
+                return listaFiltrada;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
             }
         }
     }
