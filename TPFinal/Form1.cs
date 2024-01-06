@@ -102,15 +102,29 @@ namespace TPFinal
             }
             else
             {
-                MessageBox.Show("Seleccionar algun elemento de la tabla por favor");
+                MessageBox.Show("Seleccionar algun elemento de la tabla por favor","ATENCION",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
+        }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {   // Prop : elemina el articulo seleccionado de la grilla en caso de que el usuario le de 'okey'.
+            NegocioArticulo negocio = new NegocioArticulo();
+            try
+            {
+                Articulo articulo = (Articulo)dvgArticulos.CurrentRow.DataBoundItem;
+                DialogResult respuesta = MessageBox.Show("¿Seguro que quiere eliminar el Articulo?\r\n(se borrara de manera permanente)", "ADVERTENCIA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    negocio.borrarNegocio(articulo.Id);
+                    cargarGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
 
-
-
-
-
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

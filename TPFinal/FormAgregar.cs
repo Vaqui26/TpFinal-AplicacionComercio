@@ -24,6 +24,7 @@ namespace TPFinal
         {
             InitializeComponent();
             articulo = art;
+            Text = "Modificar Articulo";
         }
 
         private void FormAgregar_Load(object sender, EventArgs e)
@@ -128,19 +129,19 @@ namespace TPFinal
                 if(articulo.Id != 0)
                 {
                     negocioArt.modificar(articulo);
-                    MessageBox.Show("Modificacion Exitosa!!");
+                    MessageBox.Show("Modificacion Exitosa!!","Hecho",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 else
                 {
                     negocioArt.agregarNuevoArticulo(articulo);
-                    MessageBox.Show("Se agrego exitosamente!!");
+                    MessageBox.Show("Se agrego exitosamente!!","Completado",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 this.Close();
 
             }
             else
             {
-                MessageBox.Show("Complete los espacios en rojo por favor.");
+                MessageBox.Show("Complete los espacios en rojo por favor.","Atencion",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             }
             catch(Exception ex)

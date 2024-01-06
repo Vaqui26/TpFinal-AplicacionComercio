@@ -112,5 +112,20 @@ namespace NegocioBDD
                 accesoDatos.cerrarConexion();
             }
         }
+        public void borrarNegocio(int id)
+        {
+            ManejoBDD accesoDatos = new ManejoBDD();
+            try
+            {
+                accesoDatos.setearConsulta("Delete From ARTICULOS where Id = @Id");
+                accesoDatos.setearParametros("@Id", id);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
