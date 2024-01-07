@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NegocioBDD;
 using Objetos;
+using System.IO;
+using System.Configuration;
 
 namespace TPFinal
 {
     public partial class FormAgregar : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
 
         public FormAgregar()
         {
@@ -136,7 +139,11 @@ namespace TPFinal
                     negocioArt.agregarNuevoArticulo(articulo);
                     MessageBox.Show("Se agrego exitosamente!!","Completado",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
-                this.Close();
+
+                if(archivo != null && !(txtImagen.Text.ToLower().Contains("http"))) 
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["urlImagen"] + archivo.SafeFileName);
+
+                    this.Close();
 
             }
             else
@@ -176,6 +183,18 @@ namespace TPFinal
             catch (Exception)
             {
                 pbxAgregar.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
+            }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {   //Prop : permite al usuario ingrear una imagen de manera local.
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtImagen.Text = archivo.FileName;
+                cargarImagen(txtImagen.Text);
+
             }
         }
     }

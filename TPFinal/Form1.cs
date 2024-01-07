@@ -26,6 +26,7 @@ namespace TPFinal
             cargarCboCampo();
             
         }
+
         private void cargarCboCampo()
         { //Prop : carga los campos de cboCampo.
             cboCampo.Items.Add("Nombre");
@@ -60,12 +61,12 @@ namespace TPFinal
         }
 
         private void dvgArticulos_SelectionChanged(object sender, EventArgs e)
-        {   //Prop : dependiendo del articulo selleccionado muestra sus datos con la subtarea 'mostrarDescripcion'.
+        {   //Prop : dependiendo del articulo seleccionado muestra sus datos con la subtarea 'mostrarDescripcion'.
             try
             {
                 if (dvgArticulos.CurrentRow != null)
                 {
-                    Articulo artActual = (Articulo)dvgArticulos.CurrentRow.DataBoundItem; // Aveces falla al agregar un articulo, nose aun porque.
+                    Articulo artActual = (Articulo)dvgArticulos.CurrentRow.DataBoundItem; 
                     cargarImagen(artActual.UrlImagen);
                     mostrarDescripcion(artActual);
                 }
@@ -291,5 +292,11 @@ namespace TPFinal
             }
             return false;
         }
+
+        private void fmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Hasta Luego!", "Adios!");
+        }
+
     }
 }

@@ -47,6 +47,7 @@ namespace TPFinal
             this.pbxAgregar = new System.Windows.Forms.PictureBox();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnCancelarAgregar = new System.Windows.Forms.Button();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAgregar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@ namespace TPFinal
             // 
             // txtCodigo
             // 
+            this.txtCodigo.BackColor = System.Drawing.Color.AliceBlue;
             this.txtCodigo.Location = new System.Drawing.Point(164, 67);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
@@ -79,6 +81,7 @@ namespace TPFinal
             // 
             // txtNombre
             // 
+            this.txtNombre.BackColor = System.Drawing.Color.AliceBlue;
             this.txtNombre.Location = new System.Drawing.Point(164, 104);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(144, 20);
@@ -97,6 +100,7 @@ namespace TPFinal
             // 
             // txtDescripcion
             // 
+            this.txtDescripcion.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDescripcion.Location = new System.Drawing.Point(164, 140);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(144, 20);
@@ -163,6 +167,7 @@ namespace TPFinal
             // 
             // txtImagen
             // 
+            this.txtImagen.BackColor = System.Drawing.Color.AliceBlue;
             this.txtImagen.Location = new System.Drawing.Point(164, 257);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(144, 20);
@@ -181,6 +186,7 @@ namespace TPFinal
             // 
             // txtPrecio
             // 
+            this.txtPrecio.BackColor = System.Drawing.Color.AliceBlue;
             this.txtPrecio.Location = new System.Drawing.Point(165, 293);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(143, 20);
@@ -189,6 +195,7 @@ namespace TPFinal
             // 
             // pbxAgregar
             // 
+            this.pbxAgregar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbxAgregar.Location = new System.Drawing.Point(356, 37);
             this.pbxAgregar.Name = "pbxAgregar";
             this.pbxAgregar.Size = new System.Drawing.Size(235, 276);
@@ -198,29 +205,58 @@ namespace TPFinal
             // 
             // btnAgregarArticulo
             // 
+            this.btnAgregarArticulo.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAgregarArticulo.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAgregarArticulo.FlatAppearance.BorderSize = 2;
+            this.btnAgregarArticulo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow;
+            this.btnAgregarArticulo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAgregarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarArticulo.Location = new System.Drawing.Point(139, 333);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarArticulo.TabIndex = 7;
             this.btnAgregarArticulo.Text = "Aceptar";
-            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.UseVisualStyleBackColor = false;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
             // btnCancelarAgregar
             // 
+            this.btnCancelarAgregar.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnCancelarAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Firebrick;
+            this.btnCancelarAgregar.FlatAppearance.BorderSize = 2;
+            this.btnCancelarAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightCoral;
+            this.btnCancelarAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.btnCancelarAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarAgregar.Location = new System.Drawing.Point(244, 333);
             this.btnCancelarAgregar.Name = "btnCancelarAgregar";
             this.btnCancelarAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarAgregar.TabIndex = 8;
             this.btnCancelarAgregar.Text = "Cancelar";
-            this.btnCancelarAgregar.UseVisualStyleBackColor = true;
+            this.btnCancelarAgregar.UseVisualStyleBackColor = false;
             this.btnCancelarAgregar.Click += new System.EventHandler(this.btnCancelarAgregar_Click);
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarImagen.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.btnAgregarImagen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FloralWhite;
+            this.btnAgregarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarImagen.Location = new System.Drawing.Point(314, 257);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(27, 23);
+            this.btnAgregarImagen.TabIndex = 16;
+            this.btnAgregarImagen.Text = "...";
+            this.btnAgregarImagen.UseVisualStyleBackColor = false;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // FormAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(617, 377);
+            this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.btnCancelarAgregar);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.pbxAgregar);
@@ -239,7 +275,12 @@ namespace TPFinal
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblTituloAgregar);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(633, 416);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(633, 416);
             this.Name = "FormAgregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.FormAgregar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAgregar)).EndInit();
@@ -268,5 +309,6 @@ namespace TPFinal
         private System.Windows.Forms.PictureBox pbxAgregar;
         private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnCancelarAgregar;
+        private System.Windows.Forms.Button btnAgregarImagen;
     }
 }
