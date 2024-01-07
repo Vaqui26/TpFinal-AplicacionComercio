@@ -175,7 +175,7 @@ namespace TPFinal
             }
             catch (Exception)
             {
-                pbxAgregar.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
+                pbxAgregar.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/non_2x/icon-image-not-found-free-vector.jpg");
             }
         }
     }

@@ -22,6 +22,7 @@ namespace TPFinal
         private void fmPrincipal_Load(object sender, EventArgs e)
         {
             cargarGrilla();
+            cargarCamposFiltros();
             cargarCboCampo();
             
         }
@@ -227,9 +228,68 @@ namespace TPFinal
                 if (!(char.IsNumber(caracter))){
                     return false;
                 }
+            
             }
             return true;
         }
-       
+        private void cargarCamposFiltros()
+        {
+            NegocioMarca marcas = new NegocioMarca();
+            NegocioCategoria categorias = new NegocioCategoria();
+            try
+            {
+                cboFiltroMarca.DataSource = marcas.listarMarca();
+                cboFiltroMarca.ValueMember = "Id";
+                cboFiltroMarca.DisplayMember = "Descripcion";
+                cboFiltroCategoria.DataSource = categorias.listarCategoria();
+                cboFiltroCategoria.ValueMember = "Id";
+                cboFiltroCategoria.DisplayMember = "Descripcion";
+
+                cboFiltroMarca.SelectedValue = "Id";
+                cboFiltroCategoria.SelectedValue = "Id";
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnFiltrarCampos_Click(object sender, EventArgs e)
+        {
+            NegocioArticulo articulos = new NegocioArticulo();
+            try
+            {
+                if (validarCamposFiltros())
+                    return;
+                Marca marcaAux = (Marca)cboFiltroMarca.SelectedItem;
+                string marca = marcaAux.Descripcion;
+                Categoria categoriaAux = (Categoria)cboFiltroCategoria.SelectedItem;
+                string categoria = categoriaAux.Descripcion;
+                dvgArticulos.DataSource = articulos.filtrarPorCampos(marca, categoria);
+                ocultarColumnas();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool validarCamposFiltros()
+        {
+            if(cboFiltroMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Elejir una marca para filtrar por favor!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            if(cboFiltroCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Elejir una categoria para poder filtrar por favor!", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            return false;
+        }
     }
 }

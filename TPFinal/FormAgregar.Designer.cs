@@ -75,14 +75,14 @@ namespace TPFinal
             this.txtCodigo.Location = new System.Drawing.Point(164, 67);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(144, 20);
-            this.txtCodigo.TabIndex = 2;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(164, 104);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(144, 20);
-            this.txtNombre.TabIndex = 4;
+            this.txtNombre.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -100,7 +100,7 @@ namespace TPFinal
             this.txtDescripcion.Location = new System.Drawing.Point(164, 140);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(144, 20);
-            this.txtDescripcion.TabIndex = 5;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // lblDescripcion
             // 
@@ -130,7 +130,7 @@ namespace TPFinal
             this.cboMarca.Location = new System.Drawing.Point(164, 178);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(144, 21);
-            this.cboMarca.TabIndex = 8;
+            this.cboMarca.TabIndex = 3;
             // 
             // lblCategoria
             // 
@@ -149,7 +149,7 @@ namespace TPFinal
             this.cboCategoria.Location = new System.Drawing.Point(164, 216);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(144, 21);
-            this.cboCategoria.TabIndex = 10;
+            this.cboCategoria.TabIndex = 4;
             // 
             // label1
             // 
@@ -166,7 +166,7 @@ namespace TPFinal
             this.txtImagen.Location = new System.Drawing.Point(164, 257);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(144, 20);
-            this.txtImagen.TabIndex = 12;
+            this.txtImagen.TabIndex = 5;
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // lblPrecio
@@ -184,7 +184,7 @@ namespace TPFinal
             this.txtPrecio.Location = new System.Drawing.Point(165, 293);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(143, 20);
-            this.txtPrecio.TabIndex = 14;
+            this.txtPrecio.TabIndex = 6;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // pbxAgregar
@@ -201,7 +201,7 @@ namespace TPFinal
             this.btnAgregarArticulo.Location = new System.Drawing.Point(139, 333);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregarArticulo.TabIndex = 16;
+            this.btnAgregarArticulo.TabIndex = 7;
             this.btnAgregarArticulo.Text = "Aceptar";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
@@ -211,7 +211,7 @@ namespace TPFinal
             this.btnCancelarAgregar.Location = new System.Drawing.Point(244, 333);
             this.btnCancelarAgregar.Name = "btnCancelarAgregar";
             this.btnCancelarAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarAgregar.TabIndex = 17;
+            this.btnCancelarAgregar.TabIndex = 8;
             this.btnCancelarAgregar.Text = "Cancelar";
             this.btnCancelarAgregar.UseVisualStyleBackColor = true;
             this.btnCancelarAgregar.Click += new System.EventHandler(this.btnCancelarAgregar_Click);
